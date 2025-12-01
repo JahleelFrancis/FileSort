@@ -30,6 +30,7 @@ Applications (.exe, .lnk)
 Code Files (.py, .cpp, .js, etc.)
 
 Other (for unmatched extensions)
+
 ------------------------------------------------------------------------------------------------------------------- How to Run:
 
 Make sure you have Python 3 installed.
