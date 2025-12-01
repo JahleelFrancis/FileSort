@@ -1,15 +1,9 @@
 import os
 import csv
 
-current_dir = os.getcwd()
+current_dir = os.path.dirname(os.path.abspath(__file__))
 files = os.listdir(current_dir)
 
-# images=[".jpeg",".png",".jpg"] #extensions for images
-# text=[".doc",".txt",".pdf",".xlsx",".docx",".xls"] #extensions for text files
-# videos=[".mp4",".mkv",".gif"] #extensions for videos
-# sounds=[".mp3",".wav",".m4a"] #extensions for sounds
-# applications=[".exe",".lnk"] #extensions for applications
-# codes = [".c",".py",".java",".cpp",".js",".html",".css",".php"] #extensions for codes
 
 file_dict = {
 'images':[".jpeg",".png",".jpg"], 
@@ -64,6 +58,7 @@ with open('sortedFiles.csv', 'w', newline='') as sortedFiles:
     for (category, file_list) in type_dict.items():
         for file_name in file_list:
             w.writerow([category, file_name])
+
 
 
 
