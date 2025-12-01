@@ -1,0 +1,73 @@
+import os
+import csv
+
+current_dir = os.getcwd()
+files = os.listdir(current_dir)
+
+# images=[".jpeg",".png",".jpg"] #extensions for images
+# text=[".doc",".txt",".pdf",".xlsx",".docx",".xls"] #extensions for text files
+# videos=[".mp4",".mkv",".gif"] #extensions for videos
+# sounds=[".mp3",".wav",".m4a"] #extensions for sounds
+# applications=[".exe",".lnk"] #extensions for applications
+# codes = [".c",".py",".java",".cpp",".js",".html",".css",".php"] #extensions for codes
+
+file_dict = {
+'images':[".jpeg",".png",".jpg"], 
+'text':[".doc",".txt",".pdf",".xlsx",".docx",".xls"],
+'videos':[".mp4",".mkv",".gif"],
+'sounds':[".mp3",".wav",".m4a"],
+'applications':[".exe",".lnk"],
+'codes':[".c",".py",".java",".cpp",".js",".html",".css",".php"]
+}
+
+img_list = []
+txt_list = []
+vid_list = []
+snd_list = []
+app_list = []
+code_list = []
+
+
+def file_sort(files: list, file_type: list, type_list: list) -> list:
+    if not files:
+        return type_list
+    
+    current_file = files[0]
+    remaining_files = files[1:]
+
+    for x in file_type:
+        if current_file.endswith(x):
+            type_list.append(current_file)
+
+    return file_sort(remaining_files, file_type, type_list)
+
+img_list = file_sort(files, file_dict['images'], img_list)
+txt_list = file_sort(files, file_dict['text'], txt_list)
+vid_list = file_sort(files, file_dict['videos'], vid_list)
+snd_list = file_sort(files, file_dict['sounds'], snd_list)
+app_list = file_sort(files, file_dict['applications'], app_list)
+code_list = file_sort(files, file_dict['codes'], code_list)
+
+type_dict = {
+    "Images": img_list,
+    "Text": txt_list,
+    "Videos": vid_list,
+    "Sounds": snd_list,
+    "Applications": app_list,
+    "Codes": code_list
+}
+
+print(type_dict)
+
+with open('sortedFiles.csv', 'w', newline='') as sortedFiles:
+    w = csv.writer(sortedFiles)
+    for (category, file_list) in type_dict.items():
+        for file_name in file_list:
+            w.writerow([category, file_name])
+
+
+
+
+
+
+
