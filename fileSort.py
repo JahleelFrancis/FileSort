@@ -28,10 +28,13 @@ def file_sort(files: list, file_type: list, type_list: list) -> list:
     
     current_file = files[0]
     remaining_files = files[1:]
+    
+    lower_name = current_file.lower() # Normalize to lowercase for extension matching
 
     for x in file_type:
         if current_file.endswith(x):
             type_list.append(current_file)
+            break
 
     return file_sort(remaining_files, file_type, type_list)
 
@@ -55,6 +58,7 @@ print(type_dict)
 
 with open(os.path.join(current_dir,'sortedFiles.csv'), 'w', newline='', encoding= 'utf-8') as sortedFiles:
     w = csv.writer(sortedFiles)
+    w.writerow(["Category", "File Name"])  # header row
     for (category, file_list) in type_dict.items():
         for file_name in file_list:
             w.writerow([category, file_name])
