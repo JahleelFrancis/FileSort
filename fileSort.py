@@ -53,7 +53,7 @@ type_dict = {
 
 print(type_dict)
 
-with open('sortedFiles.csv', 'w', newline='', encoding= 'utf-8') as sortedFiles:
+with open(os.path.join(current_dir,'sortedFiles.csv'), 'w', newline='', encoding= 'utf-8') as sortedFiles:
     w = csv.writer(sortedFiles)
     for (category, file_list) in type_dict.items():
         for file_name in file_list:
