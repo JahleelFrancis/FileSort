@@ -70,19 +70,6 @@ The categorized file dictionary in your terminal
 
 A sortedFiles.csv file in the same folder
 
--------------------------------------------------------------------------------------------------------------------
-Output Example:
-The generated sortedFiles.csv will look like:
-
-Category,File Name
-Images,photo1.jpg
-Images,image.png
-Text,notes.pdf
-Applications,setup.exe
-Codes,script.py
-
-Each file is listed under its detected type.
-
 --------------------------------------------------------------------------------------------------------------------
 Technologies Used:
 
