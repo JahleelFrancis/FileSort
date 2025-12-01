@@ -4,49 +4,84 @@ FileSort is a simple Python tool that scans a directory and automatically sorts 
 --------------------------------------------------------------------------------------------------------------------
 Features:
 
-Automatically scans the current working directory
+Automatically scans the folder where the script is located
 
-Categorizes files based on their extensions
+Groups files by type using extension-based filtering
 
-Handles unknown file types with an “Other” category
+Uses a recursive sorting function (your file_sort() logic)
 
-Outputs results to the console
+Supports common file categories:
 
-Exports sorted file data to a CSV file (sortedFiles.csv)
+Images (.png, .jpg, …)
 
---------------------------------------------------------------------------------------------------------------------
-Categories Included:
+Documents (.pdf, .txt, .docx, …)
 
-Images (.jpeg, .png, .jpg)
+Videos (.mp4, .mkv, …)
 
-Text (.txt, .pdf, .docx, etc.)
-
-Videos (.mp4, .mkv, .gif)
-
-Sounds (.mp3, .wav)
+Audio (.mp3, .wav, …)
 
 Applications (.exe, .lnk)
 
-Code Files (.py, .cpp, .js, etc.)
+Code files (.py, .c, .cpp, …)
 
-Other (for unmatched extensions)
+Skips directories (no folder scanning)
+
+Saves results to a clean CSV file (Category, FileName)
+
+Encodes output in UTF-8 so filenames with special characters work
+
+--------------------------------------------------------------------------------------------------------------------
+How it works:
+
+The script finds its own directory with:
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+It lists all items in that folder and filters out directories.
+
+For each file, the script recursively checks whether the filename ends with an extension from one of the defined categories.
+
+The results are stored in a dictionary and printed.
+
+A sortedFiles.csv file is created in the same directory as the script.
 
 ------------------------------------------------------------------------------------------------------------------- 
 How to Run:
 
-Make sure you have Python 3 installed.
-
-Clone the repository:
+1) Clone the repository:
 
 git clone https://github.com/your-username/FileSort.git
 
 
-Run the script in a directory containing files:
+2) Navigate into the project folder:
+
+cd FileSort
+
+
+3) Run the script:
 
 python fileSort.py
 
 
-A file called sortedFiles.csv will be generated with categorized results.
+4) You’ll see:
+
+The categorized file dictionary in your terminal
+
+A sortedFiles.csv file in the same folder
+
+-------------------------------------------------------------------------------------------------------------------
+Output Example:
+The generated sortedFiles.csv will look like:
+
+Category,File Name
+Images,photo1.jpg
+Images,image.png
+Text,notes.pdf
+Applications,setup.exe
+Codes,script.py
+
+Each file is listed under its detected type.
 
 --------------------------------------------------------------------------------------------------------------------
 Technologies Used:
@@ -57,7 +92,7 @@ os for directory operations
 
 csv for exporting results
 
----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
 License:
 
 This project is open-source. You can use, modify, and share it freely.
