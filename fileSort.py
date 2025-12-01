@@ -53,12 +53,11 @@ type_dict = {
 
 print(type_dict)
 
-with open('sortedFiles.csv', 'w', newline='') as sortedFiles:
+with open('sortedFiles.csv', 'w', newline='', encoding= 'utf-8') as sortedFiles:
     w = csv.writer(sortedFiles)
     for (category, file_list) in type_dict.items():
         for file_name in file_list:
             w.writerow([category, file_name])
-
 
 
 
